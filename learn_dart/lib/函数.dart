@@ -4,29 +4,6 @@ Dart 是一门真正面向对象的语言，甚至其中的函数也是对象，
 也可以把 Dart 类的实例当做方法来调用。
 */
 
-import 'dart:ffi';
-
-void test() {
-  var afun = AFunctions();
-  afun.enableFlags(bold: true, hidden: false);
-
-  var result = afun.say('lee', 'learn flutter', 'macOS');
-  print(result);
-
-  afun.enableOtherFlags(bold: true);
-
-  var aResult = afun.sayDefault('lee', 'learn flutter');
-  print(aResult);
-
-  afun.doStuff();
-
-  var list = [1, 2, 3];
-  // 将 printElement 函数作为参数传递。
-  list.forEach(afun.printElement);
-
-  print(afun.loudify('hello'));
-}
-
 class AFunctions {
   final _nobleGases = {1: 'noble'};
 
@@ -114,10 +91,6 @@ class AFunctions {
   // 词法作用域
   // Dart 是一门词法作用域的编程语言，就意味着变量的作用域是固定的， 简单说变量的作用域在编写代码的时候就已经确定了。
   // {}内的是变量可见的作用域。
-
-  // 词法闭包
-  // 闭包即一个函数对象，即使函数对象的调用在它原始作用域之外， 依然能够访问在它词法作用域内的变量。
-
 }
 
 // 匿名函数
@@ -135,7 +108,47 @@ void anonymousFunc() {
   list.forEach((item) => print('${list.indexOf(item)}: $item'));
 }
 
+// 词法闭包
+// 闭包即一个函数对象，即使函数对象的调用在它原始作用域之外， 依然能够访问在它词法作用域内的变量。
+Function makeAdder(num addBy) {
+  return (num i) => addBy + i;
+}
+
+// 返回值
+// 所有函数都会返回一个值。 如果没有明确指定返回值， 函数体会被隐式的添加 return null; 语句。
+foo() {}
+
 void main(List<String> args) {
-  // test();
-  // anonymousFunc();
+  test();
+  anonymousFunc();
+
+  // 创建一个加 2 的函数。
+  var add2 = makeAdder(2);
+  // 创建一个加 4 的函数。
+  var add4 = makeAdder(4);
+  print(add2(3));
+  print(add4(4));
+
+  assert(foo() == null);
+}
+
+void test() {
+  var afun = AFunctions();
+  afun.enableFlags(bold: true, hidden: false);
+
+  var result = afun.say('lee', 'learn flutter', 'macOS');
+  print(result);
+
+  afun.enableOtherFlags(bold: true);
+
+  var aResult = afun.sayDefault('lee', 'learn flutter');
+  print(aResult);
+
+  afun.doStuff();
+
+  var list = [1, 2, 3];
+  // 将 printElement 函数作为参数传递。
+  list.forEach(afun.printElement);
+
+  print(afun.loudify('hello'));
 }
