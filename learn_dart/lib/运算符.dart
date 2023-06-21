@@ -1,7 +1,9 @@
+import 'dart:html';
+
 /**
  * Description                Operator
  * unary postfix	            expr++    expr--    ()    []    .    ?.
- * unary prefix	              -expr    !expr    ~expr    ++expr    --expr   
+ * unary prefix	              -expr    !expr    ~expr    ++expr    --expr
  * multiplicative	            *    /    %  ~/
  * additive	                  +    -
  * shift	                    <<    >>    >>>
@@ -9,7 +11,7 @@
  * bitwise XOR	              ^
  * bitwise OR	                |
  * relational and type test	  >=    >    <=    <    as    is    is!
- * equality	                  ==    !=   
+ * equality	                  ==    !=
  * logical AND	              &&
  * logical OR	                ||
  * if null	                  ??
@@ -104,4 +106,27 @@ void aOperator() {
               ..label = 'home')
             .build())
       .build();
+
+  String optional;
+  print(optional?.length); // null
+  // print(optional.length); // 抛出异常 The getter 'length' was called on null.
+}
+
+class PhoneNumberBuilder {
+  String number;
+  String label;
+
+  PhoneNumberBuilder build() {
+    return this;
+  }
+}
+
+class AddressBookBuilder {
+  String name;
+  String email;
+  PhoneNumberBuilder phone;
+
+  AddressBookBuilder build() {
+    return this;
+  }
 }

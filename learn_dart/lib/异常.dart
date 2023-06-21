@@ -25,7 +25,7 @@ void exception() {
     print('Something really unknown: $e');
   }
 
-  // 捕获语句中可以同时使用 on 和 catch ，也可以单独分开使用。 使用 on 来指定异常类型， 使用 catch 来 捕获异常对象。
+  // 捕获语句中可以同时使用 on 和 catch ，也可以单独分开使用。 使用 on 来指定异常类型， 使用 catch 来捕获异常对象。
   // catch() 函数可以指定1到2个参数， 第一个参数为抛出的异常对象， 第二个为堆栈信息
   try {
     // ···

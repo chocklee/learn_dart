@@ -2,7 +2,7 @@ import 'dart:math';
 import 'Logger.dart';
 
 /// 每个对象都是一个类的实例，所有的类都继承于 Object
-/// 基于 Mixin继承 意味着每个类（除 Object 外） 都只有一个超类，一个类中的代码可以在其他多个继承类中重复使用。
+/// 基于 Mixin 继承意味着每个类（除 Object 外） 都只有一个超类，一个类中的代码可以在其他多个继承类中重复使用。
 ///
 /// 此章节相关文件有：Person.dart，Point.dart，Logger.dart，Rectangle.dart
 
@@ -51,7 +51,7 @@ void getRuntimeType() {
 
   // 获取对象的类型
   // 使用对象的 runtimeType 属性， 可以在运行时获取对象的类型， runtimeType 属性回返回一个 Type 对象。
-  print('The type of p is ${p.runtimeType}');
+  print('The type of p is ${p.runtimeType}'); // The type of p is Point
 }
 
 class Point {
@@ -271,11 +271,22 @@ class Musician extends Performer with Musical {
   // ...
 }
 
+class Performer {}
+
 class Maestro extends Person with Musical, Aggressive, Demented {
-  Maestro(String maestroName) {
-    name = maestroName;
+  Maestro(String maestroName) : super(maestroName) {
     canConduct = true;
   }
+}
+
+// The class 'Demented' can't be used as a mixin because it declares a constructor.
+class Demented {
+  Demented();
+}
+
+// Mixins can't declare constructors.
+mixin Aggressive {
+  Aggressive();
 }
 
 /// 通过创建一个继承自 Object 且没有构造函数的类，来实现一个 Mixin
@@ -298,7 +309,9 @@ mixin Musical {
 
 /// 指定只有某些类型可以使用的 Mixin
 /// 比如， Mixin 可以调用 Mixin 自身没有定义的方法 - 使用 on 来指定可以使用 Mixin 的父类类型
-mixin MusicalPerformer on Musician { //... }
+mixin MusicalPerformer on Musician {
+  //...
+}
 
 void main(List<String> args) {
   getRuntimeType();

@@ -1,5 +1,5 @@
 /// 泛型
-/// 通常情况下，使用一个字母来代表类型参数， 例如 E, T, S, K, 和 V 等
+/// 通常情况下，使用一个字母来代表类型参数， 例如 E, T, S, K 和 V 等
 ///
 /// 为什么使用泛型
 /// 正确指定泛型类型可以提高代码质量
@@ -17,6 +17,7 @@ abstract class Cache<T> {
 class SomeBaseClass {}
 
 class Foo<T extends SomeBaseClass> {
+  @override
   String toString() => "Instance of 'Foo<$T>'";
 }
 
@@ -29,7 +30,7 @@ class Extender extends SomeBaseClass {}
 /// 局部变量的类型 (T tmp)
 
 T first<T>(List<T> ts) {
-  T tmp = ts[0];
+  var tmp = ts[0];
   return tmp;
 }
 
@@ -49,13 +50,21 @@ void main(List<String> args) {
 
   // 运行时中的泛型集合
   // Dart 中泛型类型是 固化的，也就是说它们在运行时是携带着类型信息的
-  var aNames = List<String>();
+  var aNames = <String>[];
   aNames.addAll(['Seth', 'Kathy', 'Lars']);
-  print(aNames is List<String>);
 
   var someBaseClassFoo = Foo<SomeBaseClass>();
   var extenderFoo = Foo<Extender>();
   // 可以不指定泛型参数
   var foo = Foo();
   print(foo.runtimeType); // Foo<SomeBaseClass>
+
+  var phone = Phone<String>('123456789');
+  print(phone.phoneNumber); // 123456789
+}
+
+// 构造函数泛型
+class Phone<T> {
+  final T phoneNumber;
+  Phone(this.phoneNumber);
 }

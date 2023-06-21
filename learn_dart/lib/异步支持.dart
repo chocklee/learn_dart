@@ -50,7 +50,8 @@ Future<String> lookUpVersion() async => '1.0.0';
 
 // 异步for循环的使用形式:
 void asyncFor() {
-  await for (varOrType identifier in expression) {}
+  // await for (varOrType identifier in expression) {}
+
   // 上面 expression 返回的值必须是 Stream 类型。 执行流程如下：
   // 等待，直到流发出一个值
   // 执行 for 循环体，将变量设置为该发出的值

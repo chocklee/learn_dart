@@ -1,5 +1,5 @@
-/* 
-Dart 是一门真正面向对象的语言，甚至其中的函数也是对象，并且有它的类型 Function 
+/*
+Dart 是一门真正面向对象的语言，甚至其中的函数也是对象，并且有它的类型 Function
 这也意味着函数可以被赋值给变量或者作为参数传递给其他函数。
 也可以把 Dart 类的实例当做方法来调用。
 */
@@ -20,7 +20,7 @@ class AFunctions {
   // required 类型参数在参数最前面， 随后是 optional 类型参数。 命名的可选参数也可以标记为 “@ required”
 
   // 可选参数可以是命名参数或者位置参数，但一个参数只能选择其中一种方式修饰。
-  // 命名可选参数：调用函数时，可以使用指定命名参数 paramName: value
+  // 命名可选参数：调用函数时，可以使用指定命名参数 paramName: value, 被 {} 包裹
   void enableFlags({bool bold, bool hidden}) {
     print('$bold and $hidden');
   }

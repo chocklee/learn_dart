@@ -12,7 +12,7 @@ class Logger {
   // 工厂构造函数无法访问 this
   factory Logger(String name) {
     if (_cache.containsKey(name)) {
-      return _cache[name];
+      return (_cache[name] as Logger);
     } else {
       final logger = Logger._internal(name);
       _cache[name] = logger;

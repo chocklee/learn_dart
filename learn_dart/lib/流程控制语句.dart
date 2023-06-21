@@ -8,7 +8,7 @@ void controlFlow() {
   for (var i = 0; i < 2; i++) {
     callbacks.add(() => print(i));
   }
-  callbacks.forEach((c) => c());
+  callbacks.forEach((function) => function());
 
   var collection = [0, 1, 2];
   for (var x in collection) {

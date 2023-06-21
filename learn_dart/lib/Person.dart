@@ -31,5 +31,5 @@ void main(List<String> args) {
   if (emp is Person) {
     emp.firstName = 'Bob';
   }
-  (emp as Person).firstName = 'Bob';
+  (emp).firstName = 'Bob';
 }
